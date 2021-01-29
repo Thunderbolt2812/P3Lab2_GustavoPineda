@@ -52,32 +52,32 @@ int main(int argc, char** argv) {
 				}
 				while(cad.size()<4){
 					cout<<"Cadena muy corta"<<endl;
-					cout<<"Ingrese una cadena con el formato indicado (Ejemplo: 1AND0OR1AND0OR): ";
+					cout<<"Ingrese una cadena con el formato indicado (Ejemplo: 1AND0OR1AND0OR1): ";
 	            	cin >> cad;
 				}
 	            int ans = 0;
 				for (int i = 0; i < cad.size(); i++){
 	                char temp = cad[i];
-	                if (temp=='A' && i==1){
+	                if (temp=='A'&&i==1){
 	                    if ((cad[i-1]=='1'&&cad[i+3]=='0')||(cad[i-1]=='0'&&cad[i+3]=='1')||(cad[i-1]=='0'&&cad[i+3]=='0')){
 	                        ans=0;
-	                    }else{
+	                    }else if(cad[i-1]=='1'&&cad[i+3]=='1'){
 	                        ans=1;
 	                    }
 	                }else if (temp=='O'&&i==1){
-	                    if (ans=='0' && cad[i+2]=='0'){
-	                        ans=0;
-	                    }else{
-	                        ans=1;
-	                    }
-	                }else if (temp=='A'){
-	                    if ((ans==1 && cad[i+3]=='0')||(ans==0 && cad[i+3]=='1')||(ans==0 && cad[i+3]=='0')){
+	                    if (cad[i-1]=='0' && cad[i+2]=='0'){
 	                        ans=0;
 	                    }else{
 	                        ans=1;
 	                    }
 	                }else if (temp=='O'){
 	                    if (ans==0 && cad[i+2]=='0'){
+	                        ans=0;
+	                    }else{
+	                        ans=1;
+	                    }
+	                }else if (temp=='A'){
+	                    if ((ans==1 && cad[i+3]=='0')||(ans==0 && cad[i+3]=='1')||(ans==0 && cad[i+3]=='0')){
 	                        ans=0;
 	                    }else{
 	                        ans=1;
