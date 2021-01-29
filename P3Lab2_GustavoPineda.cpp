@@ -20,12 +20,12 @@ void ordenAscen(int array[], int num){
 		cout<<endl;
     ordenAscen(array, num-1);
 }
-float sumatoria(int num, float acum){
+double sumatoria(double num, double acum){
 	if(num==1){
 		acum=acum+(((2*num)-1)/(num*(num+1)));
 		return acum;
 	}
-	acum= acum+(((2*num)-1)/(num*(num+1)));
+	acum=acum+(((2*num)-1)/(num*(num+1)));
 	sumatoria(num-1,acum);
 }
 
@@ -40,42 +40,42 @@ int main(int argc, char** argv) {
 		cin>>opcion;
 		switch (opcion){
 			case 1:{
-				string cadena;
-				cout << "Ingrese la cadena a evaluar: ";
-	            cin >> cadena;
-	            int resultado = 0;
-				for (int i = 0; i < cadena.size(); i++){
-	                char caracter = cadena[i];
-	                if (caracter == 'A' && i == 1){
-	                    if ((cadena[i - 1] == '1' && cadena[i + 3] == '0')||(cadena[i - 1] == '0' && cadena[i + 3] == '1')||(cadena[i - 1] == '0' && cadena[i + 3] == '0')){
-	                        resultado = 0;
+				string cad;
+				cout << "Ingrese una cadena con el formato indicado (Ejemplo: 1AND0OR1AND0OR): ";
+	            cin >> cad;
+	            int ans = 0;
+				for (int i = 0; i < cad.size(); i++){
+	                char temp = cad[i];
+	                if (temp=='A' && i==1){
+	                    if ((cad[i-1]=='1' && cad[i+3]=='0')||(cad[i-1]=='0' && cad[i+3]=='1')||(cad[i-1]=='0' && cad[i+3]=='0')){
+	                        ans=0;
 	                    }else{
-	                        resultado = 1;
+	                        ans=1;
 	                    }
-	                }else if (caracter == 'O' && i == 1){
-	                    if (resultado == '0' && cadena[i + 2] == '0'){
-	                        resultado = 0;
+	                }else if (temp=='O' && i==1){
+	                    if (ans=='0' && cad[i+2] == '0'){
+	                        ans=0;
 	                    }else{
-	                        resultado = 1;
+	                        ans=1;
 	                    }
-	                }else if (caracter == 'A'){
-	                    if ((resultado == 1 && cadena[i + 3] == '0') ||(resultado == 0 && cadena[i + 3] == '1')||(resultado == 0 && cadena[i + 3] == '0')){
-	                        resultado = 0;
+	                }else if (temp == 'A'){
+	                    if ((ans==1 && cad[i+3]=='0') ||(ans==0 && cad[i+3]=='1')||(ans==0 && cad[i+3]=='0')){
+	                        ans=0;
 	                    }else{
-	                        resultado = 1;
+	                        ans=1;
 	                    }
-	                }else if (caracter == 'O'){
-	                    if (resultado == 0 && cadena[i + 2] == '0'){
-	                        resultado = 0;
+	                }else if (temp == 'O'){
+	                    if (ans==0 && cad[i+2] == '0'){
+	                        ans=0;
 	                    }else{
-	                        resultado = 1;
+	                        ans=1;
 	                    }
 	                }
 	            }
-				if (resultado != 1){
-	                cout << "Falso" << endl;
+				if (ans!=1){
+	                cout<<"False"<<endl;
 	            }else{
-	                cout << "Verdadero" << endl;
+	                cout<<"True"<<endl;
 	            }
 				break;
 			}
@@ -95,15 +95,15 @@ int main(int argc, char** argv) {
 			    cout<<endl;
 				break;
 			case 3:
-				int num;
+				double num;
 				double acum=0;
 				cout<<"Ingrese un numero"<<endl;
 				cin>>num;
 				while(num<=0){
-					cout<<"Porfavor ingrese un numero positivo diferente de 0"<<endl;
+					cout<<"Porfavor ingrese un numero positivo entero diferente de 0"<<endl;
 					cin>>num;
 				}
-				float resp = sumatoria(num,acum);
+				double resp = sumatoria((int)num,acum);
 				cout<<"S("<<num<<") = "<<resp<<endl;
 				break;
 		}
