@@ -2,6 +2,7 @@
 #include <array>
 #include <cstdlib>
 #include <string.h>
+#include <ctime>
 
 using namespace std;
 
@@ -31,6 +32,7 @@ double sumatoria(double num, double acum){
 }
 
 int main(int argc, char** argv) {
+	srand(time(NULL));
 	int opcion = 0;
 	while(opcion!=4){
 		cout<<"*******MENU*******"<<endl;
