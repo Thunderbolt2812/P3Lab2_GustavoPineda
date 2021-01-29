@@ -2,9 +2,6 @@
 #include <array>
 #include <cstdlib>
 #include <string.h>
-#include <cctype>
-#include <cstring>
-#include <cstdio>
 
 using namespace std;
 
@@ -45,17 +42,14 @@ int main(int argc, char** argv) {
 		switch (opcion){
 			case 1:{
 				string cad;
-				cout << "Ingrese una cadena con el formato indicado (Ejemplo: 1AND0OR1AND0OR): "<<endl;
+				cout << "Ingrese una cadena con el formato indicado (Ejemplo: 1AND0OR1AND0OR1): "<<endl;
 	            cin >> cad;
-	            for (int i=0; i<cad.size(); i++){
-	            	toupper(cad[i]);
-				}
 				while(cad.size()<4){
 					cout<<"Cadena muy corta"<<endl;
-					cout<<"Ingrese una cadena con el formato indicado (Ejemplo: 1AND0OR1AND0OR1): ";
+					cout<<"Ingrese la cadena de nuevo: ";
 	            	cin >> cad;
 				}
-	            int ans = 0;
+	            int ans;
 				for (int i = 0; i < cad.size(); i++){
 	                char temp = cad[i];
 	                if (temp=='A'&&i==1){
