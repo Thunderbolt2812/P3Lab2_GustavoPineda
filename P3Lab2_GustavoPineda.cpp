@@ -1,10 +1,7 @@
 #include <iostream>
-
-/* run this program using the console pauser or add your own getch, system("pause") or input loop */
 #include <array>
 #include <cstdlib>
 #include <string.h>
-/* run this program using the console pauser or add your own getch, system("pause") or input loop */
 using namespace std;
 
 void ordenAscen(int array[], int num){
@@ -42,15 +39,15 @@ int main(int argc, char** argv) {
 		cout<<"4. Salir corriendo"<<endl;
 		cin>>opcion;
 		switch (opcion){
-			case 1:
+			case 1:{
 				string cadena;
-	            cout << "Ingrese la cadena a evaluar: ";
+				cout << "Ingrese la cadena a evaluar: ";
 	            cin >> cadena;
 	            int resultado = 0;
-	            for (int i = 0; i < cadena.size(); i++){
+				for (int i = 0; i < cadena.size(); i++){
 	                char caracter = cadena[i];
 	                if (caracter == 'A' && i == 1){
-	                    if ((cadena[i - 1] == '1' && cadena[i + 3] == '0')  (cadena[i - 1] == '0' && cadena[i + 3] == '1')  (cadena[i - 1] == '0' && cadena[i + 3] == '0')){
+	                    if ((cadena[i - 1] == '1' && cadena[i + 3] == '0')||(cadena[i - 1] == '0' && cadena[i + 3] == '1')||(cadena[i - 1] == '0' && cadena[i + 3] == '0')){
 	                        resultado = 0;
 	                    }else{
 	                        resultado = 1;
@@ -62,7 +59,7 @@ int main(int argc, char** argv) {
 	                        resultado = 1;
 	                    }
 	                }else if (caracter == 'A'){
-	                    if ((resultado == 1 && cadena[i + 3] == '0')  (resultado == 0 && cadena[i + 3] == '1')  (resultado == 0 && cadena[i + 3] == '0')){
+	                    if ((resultado == 1 && cadena[i + 3] == '0') ||(resultado == 0 && cadena[i + 3] == '1')||(resultado == 0 && cadena[i + 3] == '0')){
 	                        resultado = 0;
 	                    }else{
 	                        resultado = 1;
@@ -76,12 +73,12 @@ int main(int argc, char** argv) {
 	                }
 	            }
 				if (resultado != 1){
-	                cout << "false" << endl;
+	                cout << "Falso" << endl;
 	            }else{
-	                cout << "true" << endl;
+	                cout << "Verdadero" << endl;
 	            }
-
 				break;
+			}
 			case 2:
 				int arreglo[20];
 			    for(int i = 0;i<20;i++){
