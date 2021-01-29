@@ -2,6 +2,10 @@
 #include <array>
 #include <cstdlib>
 #include <string.h>
+#include <cctype>
+#include <cstring>
+#include <cstdio>
+
 using namespace std;
 
 void ordenAscen(int array[], int num){
@@ -41,42 +45,50 @@ int main(int argc, char** argv) {
 		switch (opcion){
 			case 1:{
 				string cad;
-				cout << "Ingrese una cadena con el formato indicado (Ejemplo: 1AND0OR1AND0OR): ";
+				cout << "Ingrese una cadena con el formato indicado (Ejemplo: 1AND0OR1AND0OR): "<<endl;
 	            cin >> cad;
+	            for (int i=0; i<cad.size(); i++){
+	            	toupper(cad[i]);
+				}
+				while(cad.size()<4){
+					cout<<"Cadena muy corta"<<endl;
+					cout<<"Ingrese una cadena con el formato indicado (Ejemplo: 1AND0OR1AND0OR): ";
+	            	cin >> cad;
+				}
 	            int ans = 0;
 				for (int i = 0; i < cad.size(); i++){
 	                char temp = cad[i];
 	                if (temp=='A' && i==1){
-	                    if ((cad[i-1]=='1' && cad[i+3]=='0')||(cad[i-1]=='0' && cad[i+3]=='1')||(cad[i-1]=='0' && cad[i+3]=='0')){
+	                    if ((cad[i-1]=='1'&&cad[i+3]=='0')||(cad[i-1]=='0'&&cad[i+3]=='1')||(cad[i-1]=='0'&&cad[i+3]=='0')){
 	                        ans=0;
 	                    }else{
 	                        ans=1;
 	                    }
-	                }else if (temp=='O' && i==1){
-	                    if (ans=='0' && cad[i+2] == '0'){
+	                }else if (temp=='O'&&i==1){
+	                    if (ans=='0' && cad[i+2]=='0'){
 	                        ans=0;
 	                    }else{
 	                        ans=1;
 	                    }
-	                }else if (temp == 'A'){
-	                    if ((ans==1 && cad[i+3]=='0') ||(ans==0 && cad[i+3]=='1')||(ans==0 && cad[i+3]=='0')){
+	                }else if (temp=='A'){
+	                    if ((ans==1 && cad[i+3]=='0')||(ans==0 && cad[i+3]=='1')||(ans==0 && cad[i+3]=='0')){
 	                        ans=0;
 	                    }else{
 	                        ans=1;
 	                    }
-	                }else if (temp == 'O'){
-	                    if (ans==0 && cad[i+2] == '0'){
+	                }else if (temp=='O'){
+	                    if (ans==0 && cad[i+2]=='0'){
 	                        ans=0;
 	                    }else{
 	                        ans=1;
 	                    }
 	                }
 	            }
-				if (ans!=1){
-	                cout<<"False"<<endl;
-	            }else{
-	                cout<<"True"<<endl;
-	            }
+				if (ans==1){
+	                cout<<"Solucion = True"<<endl;
+	            }else if(ans==0){
+	            	cout<<"Solucion = False"<<endl;
+				}
 				break;
 			}
 			case 2:
